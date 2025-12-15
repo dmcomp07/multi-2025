@@ -1,0 +1,43 @@
+# Terraform
+*.tfstate
+*.tfstate.*
+*.tfvars
+!environments/*/terraform.tfvars
+.terraform/
+.terraform.lock.hcl
+terraform/.terraform
+
+# Environment variables
+.env
+.env.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# GCP
+.config/gcp/
+google_credentials.json
+terraform-key.json
+
+# Kubernetes
+kubeconfig
+.kube/
+
+# Scripts output
+*.log
+*.tmp
+.bucket-name
+
+# Build
+dist/
+build/
+__pycache__/
+*.pyc
