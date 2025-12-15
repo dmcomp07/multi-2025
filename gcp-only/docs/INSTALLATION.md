@@ -27,8 +27,8 @@ Complete step-by-step guide to set up the DevOps infrastructure.
 ### Step 1: Clone Repository
 
 ```bash
-git clone https://github.com/your-username/devops-gcp-project.git
-cd devops-gcp-project
+git clone https://github.com/dmcomp07/multi-2025/gcp-only.git
+cd gcp-only
 ```
 
 ### Step 2: Install Dependencies (On Ubuntu Instance)
