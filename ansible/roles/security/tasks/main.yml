@@ -1,0 +1,78 @@
+---
+- name: Update system packages
+  apt:
+    update_cache: yes
+    cache_valid_time: 3600
+
+- name: Install security tools
+  apt:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - ufw
+    - fail2ban
+    - aide
+    - auditd
+    - unattended-upgrades
+
+- name: Configure UFW firewall
+  ufw:
+    rule: allow
+    port: "{{ item }}"
+    proto: tcp
+  loop:
+    - "22"
+    - "80"
+    - "443"
+
+- name: Enable UFW
+  ufw:
+    state: enabled
+
+- name: Configure SSH hardening
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: "^#?{{ item.key }}"
+    line: "{{ item.key }} {{ item.value }}"
+  with_items:
+    - { key: "PermitRootLogin", value: "no" }
+    - { key: "PasswordAuthentication", value: "no" }
+    - { key: "PubkeyAuthentication", value: "yes" }
+    - { key: "X11Forwarding", value: "no" }
+  notify: restart sshd
+
+- name: Configure fail2ban
+  lineinfile:
+    path: /etc/fail2ban/jail.local
+    line: "{{ item }}"
+    create: yes
+  with_items:
+    - "[DEFAULT]"
+    - "bantime = 3600"
+    - "findtime = 600"
+    - "maxretry = 5"
+  notify: restart fail2ban
+
+- name: Initialize AIDE database
+  shell: aideinit
+  creates: /var/lib/aide/aide.db
+
+- name: Start security services
+  systemd:
+    name: "{{ item }}"
+    state: started
+    enabled: yes
+  loop:
+    - fail2ban
+    - auditd
+
+handlers:
+  - name: restart sshd
+    systemd:
+      name: sshd
+      state: restarted
+
+  - name: restart fail2ban
+    systemd:
+      name: fail2ban
+      state: restarted

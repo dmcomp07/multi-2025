@@ -1,0 +1,31 @@
+---
+name: "Site Configuration"
+hosts: all
+
+- name: "Configure all nodes"
+  hosts: all
+  tasks:
+    - name: "Update system"
+      apt:
+        update_cache: yes
+
+- name: "Configure monitoring"
+  hosts: monitoring
+  roles:
+    - prometheus
+    - grafana
+
+- name: "Configure security"
+  hosts: all
+  roles:
+    - security
+
+- name: "Configure Docker"
+  hosts: docker_hosts
+  roles:
+    - docker
+
+- name: "Configure Kubernetes"
+  hosts: k8s_nodes
+  roles:
+    - kubernetes

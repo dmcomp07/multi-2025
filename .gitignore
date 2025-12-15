@@ -1,0 +1,168 @@
+# Terraform
+*.tfstate
+*.tfstate.*
+.terraform/
+.terraform.lock.hcl
+crash.log
+crash.*.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+.terraformignore
+terraform.tfvars
+!terraform.tfvars.example
+*.tfvars.json
+*.auto.tfvars
+*.auto.tfvars.json
+
+# Ansible
+*.pyc
+__pycache__/
+*.egg-info/
+dist/
+build/
+.ansible/roles/*
+!.ansible/roles/.gitkeep
+
+# Python
+venv/
+env/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+*.iml
+
+# Docker
+.docker/
+*.log
+
+# Kubernetes
+kubeconfig
+.kube/
+*.pem
+*.key
+
+# Jenkins
+.jenkins/
+credentials.xml
+secrets/
+
+# Credentials & Secrets
+*.key
+*.pem
+terraform-key.json
+credentials.json
+.env
+.env.local
+secrets/
+.secrets/
+*.enc
+*.decrypted
+
+# Build artifacts
+bin/
+obj/
+*.o
+*.a
+*.so
+*.dylib
+*.exe
+*.dll
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.backup
+*.orig
+*~
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Testing
+coverage/
+.coverage
+htmlcov/
+.pytest_cache/
+.tox/
+
+# Node (if using any node-based tools)
+node_modules/
+npm-debug.log
+yarn-error.log
+.npm/
+
+# Go
+vendor/
+*.go.mod
+*.go.sum
+
+# Backup files
+*.backup
+*.bak
+*.tmp
+
+# Local configuration
+local.tf
+local.tfvars
+.local/
+
+# CI/CD
+.github/workflows/*.log
+ci-*.log
+
+# Ansible dynamic inventory cache
+.cache/
+*.cache
+
+# Prometheus
+prometheus/data/
+
+# Grafana
+grafana/data/
+
+# Documentation
+docs/.build/
+docs/_build/
+
+# Root ssh keys (NEVER commit!)
+~/.ssh/
+id_rsa*
+id_ed25519*
+!.gitkeep
