@@ -58,8 +58,8 @@ Azure CLI
 
 ### 1. Clone Repository
 ```bash
-git clone https://github.com/yourorg/devops-hybrid-cloud.git
-cd devops-hybrid-cloud
+git clone https://github.com/dmcomp07/multi-2025.git
+cd multi-2025
 ```
 
 ### 2. Setup Credentials
